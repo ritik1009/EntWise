@@ -1,0 +1,30 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
+body{
+  background: black;
+  color:white;
+}
+
+.card{
+  background-color: rgb(24, 24, 24);
+}
+.card h1{
+  overflow: hidden;
+}
+
+.header{
+  background-color: #1d1f25;
+}
+
+@layer base {
+        input[type='number']::-webkit-outer-spin-button,
+        input[type='number']::-webkit-inner-spin-button,
+        input[type='number'] {
+          -webkit-appearance: none;
+          margin: 0;
+          -moz-appearance: textfield !important;
+        }
+     }
