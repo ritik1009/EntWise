@@ -9,6 +9,7 @@ import { userRef } from "../firebase/firebase";
 import { addDoc } from "firebase/firestore";
 import { useNavigate } from "react-router-dom";
 import bcrypt from 'bcryptjs';
+import CryptoES from "crypto-es";
 
 const auth = getAuth(app)
 

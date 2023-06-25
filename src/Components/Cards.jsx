@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { TailSpin, BallTriangle } from "react-loader-spinner";
+import {  BallTriangle } from "react-loader-spinner";
 import ReactStars from "react-stars";
 import { getDocs } from 'firebase/firestore';
 import { movieRef } from '../firebase/firebase';

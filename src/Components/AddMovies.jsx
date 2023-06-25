@@ -4,7 +4,7 @@ import { addDoc } from "firebase/firestore";
 import { movieRef } from "../firebase/firebase";
 import swal from 'sweetalert';
 import { Appstate } from "../App";
-import { Navigate, useNavigate } from "react-router-dom";
+import {  useNavigate } from "react-router-dom";
 
 
 const AddMovies = () => {

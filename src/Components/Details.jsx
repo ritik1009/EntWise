@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import ReactStars from 'react-stars';
 import { useParams } from 'react-router-dom';
 import { getDoc, doc } from 'firebase/firestore';
-import { db, movieRef } from '../firebase/firebase';
+import { db } from '../firebase/firebase';
 import {Bars} from 'react-loader-spinner'
 import Reviews from './Reviews';
 
@@ -18,17 +18,16 @@ const Details = () => {
         rated:0,
     });
     useEffect(()=>{
-        
-        async function get_data(){
-           setLoading(true);
-            const _doc = doc(db,"movie",id)
-            const _data = await getDoc(_doc)
-            console.log(_data)
-            setData(_data.data())
-            setLoading(false)
-           
-        }
-        get_data();
+      async function get_data() {
+        setLoading(true);
+        const _doc = doc(db, "movie", id);
+        const _data = await getDoc(_doc);
+        console.log(_data);
+        setData(_data.data());
+        setLoading(false);
+      }
+      get_data();
+      // eslint-disable-next-line react-hooks/exhaustive-deps
     },[])
   return (
     <div className="p-4 mt-4 w-full flex flex-col md:flex-row items-center md:items-start justify-center ">
