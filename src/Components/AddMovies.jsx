@@ -22,7 +22,7 @@ const AddMovies = () => {
 
   const addmovie = async ()=>{
     setLoading(true)
-    if(useAppState.login){
+    if(useAppState.login && useAppState.role==='admin'){
       await addDoc(movieRef,form)
       swal({
         title:"Sucessfully Added",

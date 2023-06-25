@@ -19,6 +19,7 @@ const Singup = () => {
     email: "",
     mobile:"",
     password: "",
+    role:"user",
   });
   const [loading, setLoading] = useState(false);
   const [otpSent,setOtpSent] = useState(false);

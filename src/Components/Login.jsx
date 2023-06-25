@@ -34,6 +34,7 @@ const Login = () => {
                     UseAppState.setLogin(true)
                     UseAppState.setUserName(_data.name);
                     UseAppState.setUserId(doc.id);
+                    UseAppState.setRole(_data.role);
                     swal({
                       title: "Logged In",
                       icon: "success",

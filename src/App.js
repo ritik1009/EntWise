@@ -13,8 +13,9 @@ function App() {
   const [login,setLogin]=useState(false);
   const [userName,setUserName]=useState('');
   const [user_id,setUserId] = useState('');
+  const [role,setRole] = useState('');
   return (
-    <Appstate.Provider value={{ login, userName,user_id, setLogin, setUserName,setUserId }}>
+    <Appstate.Provider value={{ login, userName,user_id,role, setLogin, setUserName,setUserId,setRole }}>
       <div className="App relative">
         <Header />
         <Routes>

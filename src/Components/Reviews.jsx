@@ -58,17 +58,19 @@ const Reviews = ({id , prevRating, userRated}) => {
         }
     }
     useEffect(()=>{
-        async function get_Reviews(){
-            setReviewsLoading(true);
-            setReviews([])
-            let query_ = query(reviewRef,where('movie_id','==',id))
-            const _data = await getDocs(query_);
-            console.log(_data);
-            _data.forEach((doc)=>{
-                setReviews(prev=>[...prev,doc.data()])
-            })
-            setReviewsLoading(false);
-        }get_Reviews();
+      async function get_Reviews() {
+        setReviewsLoading(true);
+        setReviews([]);
+        let query_ = query(reviewRef, where("movie_id", "==", id));
+        const _data = await getDocs(query_);
+        console.log(_data);
+        _data.forEach((doc) => {
+          setReviews((prev) => [...prev, doc.data()]);
+        });
+        setReviewsLoading(false);
+      }
+      get_Reviews();
+      // eslint-disable-next-line react-hooks/exhaustive-deps
     },[newAdded])
   return (
     <div className="mt-4  border-t-2 border-gray-700 w-full">
