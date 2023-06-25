@@ -92,7 +92,10 @@ const Singup = () => {
         <>
           <div className="p-2  w-1/3">
             <div className="relative">
-              <label for="Mobile" className="leading-7 text-sm text-gray-300">
+              <label
+                htmlFor="Mobile"
+                className="leading-7 text-sm text-gray-300"
+              >
                 OTP
               </label>
               <input
@@ -106,7 +109,10 @@ const Singup = () => {
             </div>
           </div>
           <div className="p-2 w-full">
-            <button className="flex mx-auto text-white bg-green-600 border-0 py-2 px-8 focus:outline-none hover:bg-green-700 rounded text-lg" onClick={verifyOtp}>
+            <button
+              className="flex mx-auto text-white bg-green-600 border-0 py-2 px-8 focus:outline-none hover:bg-green-700 rounded text-lg"
+              onClick={verifyOtp}
+            >
               {loading ? <TailSpin height={25} color="white" /> : "Verify OTP"}
             </button>
           </div>
@@ -115,7 +121,7 @@ const Singup = () => {
         <>
           <div className="p-2 w-1/3">
             <div className="relative">
-              <label for="Name" className="leading-7 text-sm text-gray-300">
+              <label htmlFor="Name" className="leading-7 text-sm text-gray-300">
                 Name
               </label>
               <input
@@ -130,7 +136,10 @@ const Singup = () => {
           </div>
           <div className="p-2 w-1/3">
             <div className="relative">
-              <label for="Email" className="leading-7 text-sm text-gray-300">
+              <label
+                htmlFor="Email"
+                className="leading-7 text-sm text-gray-300"
+              >
                 Email
               </label>
               <input
@@ -145,7 +154,10 @@ const Singup = () => {
           </div>
           <div className="p-2  w-1/3">
             <div className="relative">
-              <label for="Mobile" className="leading-7 text-sm text-gray-300">
+              <label
+                htmlFor="Mobile"
+                className="leading-7 text-sm text-gray-300"
+              >
                 Mobile no.
               </label>
               <input
@@ -160,7 +172,10 @@ const Singup = () => {
           </div>
           <div className="p-2  w-1/3">
             <div className="relative">
-              <label for="Password" className="leading-7 text-sm text-gray-300">
+              <label
+                htmlFor="Password"
+                className="leading-7 text-sm text-gray-300"
+              >
                 Password
               </label>
               <input

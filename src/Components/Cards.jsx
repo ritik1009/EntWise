@@ -28,7 +28,7 @@ const Cards = () => {
       ) : (
         data.map((item, idx) => {
           return (
-            <Link to={`/detail/${item.id}`}>
+            <Link to={`/detail/${item.id}`} key={item.id}>
               <div className=" card shadow-xl hover:shadow-slate-400 p-1 md:p-2 cursor-pointer text-sm duration-300 font-small md:font-medium  mt-6 gap-2">
                 <img
                   className="h-52 md:h-72 w-32 md:w-52 hover:scale-105 duration-300"

@@ -62,7 +62,7 @@ const Login = () => {
       <h1 className="text-2xl font-bold w-full text-center">Login</h1>
       <div className="p-2 w-full md:w-1/3">
         <div className="relative">
-          <label for="mobile_no" className="leading-7 text-sm text-gray-300">
+          <label htmlFor="mobile_no" className="leading-7 text-sm text-gray-300">
             Mobile No.
           </label>
           <input
@@ -78,7 +78,7 @@ const Login = () => {
 
       <div className="p-2 w-full md:w-1/3">
         <div className="relative">
-          <label for="Password" className="leading-7 text-sm text-gray-300">
+          <label htmlFor="Password" className="leading-7 text-sm text-gray-300">
             Password
           </label>
           <input

@@ -17,16 +17,17 @@ const Reviews = ({id , prevRating, userRated}) => {
     const[reviews,setReviews]=useState([])
     const [reviewsLoading,setReviewsLoading] = useState(true)
     const [newAdded,setNewAdded] = useState(0)
+    const [reviewAble,setReviewAble] = useState(true)
     const SendReview = async()=>{
         try {
             if(useAppState.login){
                 setLoading(true)
-                console.log("rating------------",rating)
                 await addDoc(reviewRef,{
                     movie_id:id,
                     name:useAppState.userName,
                     rating:rating,
                     thoughts:form,
+                    user_id:useAppState.user_id,
                     timestamp:new Date().getTime(),
                 })
                 const ref = doc(db,'movie',id);
@@ -63,9 +64,12 @@ const Reviews = ({id , prevRating, userRated}) => {
         setReviews([]);
         let query_ = query(reviewRef, where("movie_id", "==", id));
         const _data = await getDocs(query_);
-        console.log(_data);
         _data.forEach((doc) => {
-          setReviews((prev) => [...prev, doc.data()]);
+          const dd = doc.data()
+          if(dd.user_id ===useAppState.user_id){
+            setReviewAble(false)
+          }
+          setReviews((prev) => [...prev, dd]);
         });
         setReviewsLoading(false);
       }
@@ -74,7 +78,7 @@ const Reviews = ({id , prevRating, userRated}) => {
     },[newAdded])
   return (
     <div className="mt-4  border-t-2 border-gray-700 w-full">
-        {useAppState.login?<div>
+        {useAppState.login && reviewAble?<div>
       <ReactStars
         count={5}
         size={30}
@@ -100,7 +104,7 @@ const Reviews = ({id , prevRating, userRated}) => {
                     reviews.map((item,idx)=>{
                         return (
                           <div
-                            className="bg-gray-800 mt-2 w-full p-2"
+                            className={`${item.user_id===useAppState.user_id?"bg-gray-700":"bg-gray-800"} mt-2 w-full p-2`}
                             key={idx}
                           >
                             <div className="flex items-center">

@@ -23,18 +23,11 @@ const Header = () => {
             Ent<span className="text-white">Wise</span>
           </span>
         </Link>
-        {/* <Link to="/addmovie">
-          <h1 className="text-lg text-white flex items-center cursor-pointer">
-            <Button class="hover:bg-gray-500 pr-2">
-              <AddIcon className="mr-2" color="secondary" />
-              <span className="text-white">Add New </span>
-            </Button>
-          </h1>
-        </Link> */}
+        
         {useAppState.login ? (
           <div className="flex ">
               <h1 className="text-lg text-white flex items-center cursor-pointer mr-2">
-                <Button class="hover:bg-gray-500 pr-2" onClick={logout}>
+                <Button className="hover:bg-gray-500 pr-2" onClick={logout}>
                   <LoginIcon className="mr-2" color="secondary" />
                   <span className="text-white">Log Out </span>
                 </Button>
@@ -42,7 +35,7 @@ const Header = () => {
             {useAppState.role === "admin" ? (
             <Link to="/addmovie">
               <h1 className="text-lg text-white flex items-center cursor-pointer">
-                <Button class="hover:bg-gray-500 pr-2">
+                <Button className="hover:bg-gray-500 pr-2">
                   <AddIcon className="mr-2" color="secondary" />
                   <span className="text-white">Add New </span>
                 </Button>
@@ -53,7 +46,7 @@ const Header = () => {
         ) : (
           <Link to="/login">
             <h1 className="text-lg text-white flex items-center cursor-pointer">
-              <Button class="hover:bg-gray-500 pr-2">
+              <Button className="hover:bg-gray-500 pr-2">
                 <LoginIcon className="mr-2" color="secondary" />
                 <span className="text-white">Login </span>
               </Button>
