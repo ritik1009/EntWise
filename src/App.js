@@ -6,6 +6,7 @@ import { Routes, Route } from "react-router-dom";
 import { createContext, useState} from "react";
 import Login from "./Components/Login";
 import Singup from "./Components/Singup";
+import Edit from "./Components/Edit";
 
 const Appstate = createContext();
 
@@ -22,6 +23,7 @@ function App() {
           <Route path="/" element={<Cards />} />
           <Route path="/addmovie" element={<AddMoivies />} />
           <Route path="/detail/:id" element={<Details />} />
+          <Route path="/detail/edit/:id" element={<Edit />} />
           <Route path="/login" element={<Login />} />
           <Route path="/sign_up" element={<Singup />} />
         </Routes>

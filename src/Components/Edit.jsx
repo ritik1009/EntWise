@@ -1,35 +1,56 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useState,useEffect } from "react";
 import { TailSpin } from "react-loader-spinner";
-import { addDoc } from "firebase/firestore";
-import { movieRef } from "../firebase/firebase";
-import swal from 'sweetalert';
+import { updateDoc } from "firebase/firestore";
+// import { movieRef } from "../firebase/firebase";
+import swal from "sweetalert";
 import { Appstate } from "../App";
-import {  redirect, useNavigate } from "react-router-dom";
+import { getDoc, doc } from "firebase/firestore";
+import { db } from "../firebase/firebase";
+import { useNavigate,useParams } from "react-router-dom";
 
 
-const AddMovies = () => {
+const Edit = () => {
+    const {id} = useParams();
   const useAppState = useContext(Appstate);
-  const navigate = useNavigate()
-  const [form,setForm] = useState({
-    title:"",
-    year:"",
-    description:"",
-    img:"",
-    rated:0,
-    rating:0,
-    tags:"",
-    actors:"",
-    directors:"",
-    writers:"",
+  const navigate = useNavigate();
+  const [form, setForm] = useState({
+    title: "",
+    year: "",
+    description: "",
+    img: "",
+    rated: 0,
+    rating: 0,
+    tags: "",
+    actors: "",
+    directors: "",
+    writers: "",
   });
-  const [loading,setLoading] = useState(false);
-  const stringToArray = (data)=>{
-    return data.split("\n")
-  }
-  const addmovie = async ()=>{
-    setLoading(true)
-    if(useAppState.login && useAppState.role==='admin'){
-      await addDoc(movieRef, {
+  useEffect(() => {
+    async function get_data() {
+      setLoading(true);
+      const _doc = doc(db, "movie", id);
+      const _data = await getDoc(_doc);
+      console.log(_data);
+      setForm(_data.data());
+      setLoading(false);
+    }
+    get_data();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+  const [loading, setLoading] = useState(false);
+  const stringToArray = (data_) => {
+    try {
+        return data_.split(",");
+    } catch (error) {
+        return data_
+    }
+    
+  };
+  const editmovie = async () => {
+    setLoading(true);
+    const _doc = doc(db, "movie", id);
+    if (useAppState.login && useAppState.role === "admin") {
+      await updateDoc(_doc, {
         title: form.title,
         year: form.year,
         description: form.description,
@@ -42,31 +63,30 @@ const AddMovies = () => {
         writers: stringToArray(form.writers),
       });
       swal({
-        title:"Sucessfully Added",
-        icon:"success",
-        buttons:false,
-        timer:3000,
-      })
+        title: "Sucessfully Added",
+        icon: "success",
+        buttons: false,
+        timer: 3000,
+      });
       setForm({
-      title:"",
-      year:"",
-      description:"",
-      img:""
-      })
+        title: "",
+        year: "",
+        description: "",
+        img: "",
+      });
       setLoading(false);
-    }else{
-      navigate('/login')
+    } else {
+      navigate("/login");
     }
-
-  }
+  };
   return (
     <div>
-      {useAppState.login ? (
+      {useAppState.login && useAppState.role==='admin' ? (
         <section className="text-gray-600 body-font relative">
           <div className="container px-5 py-8 mx-auto">
             <div className="flex flex-col text-center w-full mb-12">
               <h1 className="sm:text-3xl text-2xl font-medium title-font mb-2 text-white">
-                Add Movie
+                Edit Movie
               </h1>
             </div>
             <div className="lg:w-1/2 md:w-2/3 mx-auto">
@@ -228,13 +248,13 @@ const AddMovies = () => {
                 </div>
                 <div className="p-2 w-full">
                   <button
-                    onClick={addmovie}
+                    onClick={editmovie}
                     className="flex mx-auto text-white bg-green-600 border-0 py-2 px-8 focus:outline-none hover:bg-green-700 rounded text-lg"
                   >
                     {loading ? (
                       <TailSpin height={25} color="white" />
                     ) : (
-                      "Submit"
+                      "Edit"
                     )}
                   </button>
                 </div>
@@ -249,4 +269,4 @@ const AddMovies = () => {
   );
 };
 
-export default AddMovies;
+export default Edit;
