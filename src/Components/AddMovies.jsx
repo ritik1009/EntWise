@@ -4,7 +4,7 @@ import { addDoc } from "firebase/firestore";
 import { movieRef } from "../firebase/firebase";
 import swal from 'sweetalert';
 import { Appstate } from "../App";
-import {  redirect, useNavigate } from "react-router-dom";
+import {useNavigate } from "react-router-dom";
 
 
 const AddMovies = () => {
@@ -48,11 +48,15 @@ const AddMovies = () => {
         timer:3000,
       })
       setForm({
-      title:"",
-      year:"",
-      description:"",
-      img:""
-      })
+        title: "",
+        year: "",
+        description: "",
+        img: "",
+        tags: "",
+        actors: "",
+        directors: "",
+        writers: "",
+      });
       setLoading(false);
     }else{
       navigate('/login')
